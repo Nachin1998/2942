@@ -8,38 +8,30 @@ public class Player : MonoBehaviour
     public GameObject[] gun;
     public float movement;
 
+    Rigidbody2D rb;
+    Vector2 input;
+    Vector2 velocity;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.up * Time.deltaTime * movement);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(Vector3.down * Time.deltaTime * movement);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * Time.deltaTime * movement);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * Time.deltaTime * movement);
-        }
+        input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        velocity = input * movement;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             for (int i = 0; i < gun.Length; i++)
             {
-                if (i%2==0)
-                {
-                    Instantiate(bullet, gun[0].transform.position, Quaternion.identity);
-                }
-                else
-                {
-                    Instantiate(bullet, gun[1].transform.position, Quaternion.identity);
-                }
+                Instantiate(bullet, gun[i].transform.position, Quaternion.identity);
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = velocity;
     }
 }
