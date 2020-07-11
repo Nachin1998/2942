@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
-    public GameObject bullet;
+    public Bullet bullet;
+    public Shield shield;
     public GameObject[] gun;
     public float movement;
 
@@ -21,6 +23,8 @@ public class Player : MonoBehaviour
         input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         velocity = input * movement;
 
+        Debug.Log(Input.GetAxisRaw("Horizontal"));
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             for (int i = 0; i < gun.Length; i++)
@@ -28,6 +32,14 @@ public class Player : MonoBehaviour
                 Instantiate(bullet, gun[i].transform.position, Quaternion.identity);
             }
         }
+
+        if (!shield.isActive){
+            if (Input.GetMouseButtonDown(1))
+            {
+                Instantiate(shield, transform.position, Quaternion.identity, transform);
+            }
+        }
+
     }
 
     private void FixedUpdate()

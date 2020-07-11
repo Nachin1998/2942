@@ -5,51 +5,49 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float movementSpeed;
-    Rigidbody2D rb;
-    Vector2 speed;
 
-    GameObject child;
+    [HideInInspector] public SpriteRenderer sr;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public BoxCollider2D bc;
+    [HideInInspector] public ParticleSystem ps;
 
-    float timer;
-    bool activeTimer;
-    void Start()
+    [HideInInspector] public Vector2 speed;
+
+    public float timeUntillDestroyed;
+
+    public void GetComponents()
     {
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
+        ps = GetComponentInChildren<ParticleSystem>();
+
         speed = new Vector2(0, movementSpeed);
-
-        child = gameObject.transform.GetChild(0).gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void MoveBullet()
     {
-        if(gameObject.tag == "PlayerBullet")
-        {
-            rb.velocity = speed * Time.deltaTime;
-        }
-        else if (gameObject.tag == "EnemyBullet")
-        {
-            rb.velocity = -speed * Time.deltaTime;
-        }
+        rb.velocity = speed * Time.deltaTime;
+    }
 
-        if (activeTimer)
+    public void DestroyBulletAfter(float time)
+    {
+        timeUntillDestroyed += Time.deltaTime;
+
+        if(timeUntillDestroyed > time)
         {
-            timer += Time.deltaTime;
-        }
-        if (timer > 0.5f)
-        {
-            Destroy(child);
+            StartCoroutine(DestroyBullet());
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    public IEnumerator DestroyBullet()
     {
-            activeTimer = true;
-            gameObject.transform.DetachChildren();
+        sr.color = Color.clear;
+        Destroy(bc);
+        ps.Stop();
 
-            Destroy(child);
-
-            Debug.Log("Bruh");
-        
+        yield return new WaitForSeconds(0.3f);
+        Destroy(ps);
+        Destroy(gameObject);
     }
 }
