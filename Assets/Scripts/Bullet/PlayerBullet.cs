@@ -16,15 +16,15 @@ public class PlayerBullet : Bullet
 
     void Update()
     {
-        DestroyBulletAfter(3);
+        DestroyBulletAfterTime();
     }
     private void OnCollisionEnter2D(Collision2D col)
-    {        
-        if(col.gameObject.tag == "Enemy" ||
-           col.gameObject.tag == "EnemyBullet")
+    {
+        if (col.gameObject.tag == "Enemy" ||
+            col.gameObject.tag == "EnemyBullet")
         {
             Destroy(col.gameObject);
-            StartCoroutine(DestroyBullet());
+            StartCoroutine(DestroyBullet(true));                       
         }
     }
 }

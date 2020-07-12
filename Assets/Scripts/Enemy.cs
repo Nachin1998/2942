@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
         if(timer > shootRate)
         {
-            Instantiate(bullet, gun.transform.position, Quaternion.identity, transform);
+            Instantiate(bullet, gun.transform.position, Quaternion.identity);
             timer = 0;
         }
     }

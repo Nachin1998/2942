@@ -145,12 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 2500
-  sr: {fileID: 0}
-  rb: {fileID: 0}
-  bc: {fileID: 0}
-  ps: {fileID: 0}
+  explosion: {fileID: -7497410792896532564, guid: b689785fced419543ae2bb48bd55d70d,
+    type: 3}
   speed: {x: 0, y: 0}
-  timerUntillDestroyed: 3
+  delayUntillDestroyed: 2
 --- !u!1 &3501391052028954997
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +264,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2

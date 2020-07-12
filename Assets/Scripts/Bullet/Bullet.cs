@@ -6,14 +6,19 @@ public class Bullet : MonoBehaviour
 {
     public float movementSpeed;
 
-    [HideInInspector] public SpriteRenderer sr;
-    [HideInInspector] public Rigidbody2D rb;
-    [HideInInspector] public BoxCollider2D bc;
-    [HideInInspector] public ParticleSystem ps;
+    private SpriteRenderer sr;
+    private Rigidbody2D rb;
+    private BoxCollider2D bc;
+    private ParticleSystem ps;
+
+    [Space]
+
+    public Explosion explosion;
 
     [HideInInspector] public Vector2 speed;
 
-    public float timeUntillDestroyed;
+    float timer = 0;
+    public float delayUntillDestroyed;
 
     public void GetComponents()
     {
@@ -30,23 +35,28 @@ public class Bullet : MonoBehaviour
         rb.velocity = speed * Time.deltaTime;
     }
 
-    public void DestroyBulletAfter(float time)
+    public void DestroyBulletAfterTime()
     {
-        timeUntillDestroyed += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if(timeUntillDestroyed > time)
+        if(timer > delayUntillDestroyed)
         {
-            StartCoroutine(DestroyBullet());
+            StartCoroutine(DestroyBullet(false));
         }
     }
 
-    public IEnumerator DestroyBullet()
+    public IEnumerator DestroyBullet(bool instanceExplosionOrNot)
     {
         sr.color = Color.clear;
         Destroy(bc);
         ps.Stop();
 
-        yield return new WaitForSeconds(0.3f);
+        if (instanceExplosionOrNot)
+        {
+            Instantiate(explosion, transform.position, Quaternion.identity);
+        }
+
+        yield return new WaitForSeconds(1f);
         Destroy(ps);
         Destroy(gameObject);
     }

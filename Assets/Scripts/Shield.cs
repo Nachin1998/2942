@@ -18,7 +18,6 @@ public class Shield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isActive = true;
         activatioTimer += Time.deltaTime;
 
         transform.position = transform.parent.gameObject.transform.position;
