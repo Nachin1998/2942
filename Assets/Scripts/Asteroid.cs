@@ -19,6 +19,7 @@ public class Asteroid : MonoBehaviour
         movement = new Vector2(0, speed);
 
         randRotation = Random.Range(-2, 2);
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
 
@@ -40,10 +41,20 @@ public class Asteroid : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Shield" ||
-           col.gameObject.tag == "PlayerBullet")
-        {
+           col.gameObject.tag == "PlayerBullet" ||
+           col.gameObject.tag == "Player")
+        {            
             Instantiate(asteroidExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Enemy")
+        {
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+        else
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
         }
     }
 }

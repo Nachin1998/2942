@@ -16,7 +16,6 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        Vector2 spawnPos = new Vector2(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y);
         asteroid.speed = Random.Range(minSpeed, maxSpeed);
     }
 

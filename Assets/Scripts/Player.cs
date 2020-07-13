@@ -31,10 +31,11 @@ public class Player : MonoBehaviour
     Vector2 velocity;
 
     [HideInInspector] public bool isDead;
+    [HideInInspector] public bool gotHit;
 
     private void Start()
     {
-        lives = 3;
+        lives = 5;
         power = 100f;
         rb = GetComponent<Rigidbody2D>();
         isDead = false;
@@ -80,7 +81,7 @@ public class Player : MonoBehaviour
             isDead = true;
         }
 
-        PowerBar();
+        PowerBar();        
     }
 
     private void FixedUpdate()
@@ -91,10 +92,11 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "EnemyBullet" || 
-            col.gameObject.tag == "Asteroid")
+           col.gameObject.tag == "Asteroid")
         {
             lives--;
-        }        
+            StartCoroutine(GotHitCheck());
+        }
     }
 
     void PowerBar()
@@ -112,5 +114,12 @@ public class Player : MonoBehaviour
         {
             powerBar.color = Color.red;
         }
+    }
+
+    public IEnumerator GotHitCheck()
+    {
+        gotHit = true;
+        yield return new WaitForSeconds(0.2f);
+        gotHit = false;
     }
 }
