@@ -2051,6 +2051,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422123607}
   m_CullTransparentMesh: 0
+--- !u!1 &1422697321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1422697322}
+  - component: {fileID: 1422697323}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1422697322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422697321}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2686245, y: 0.27058563, z: -14.497978}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1422697323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422697321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3c4d069f865b54caf367ce66cab5aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroid: {fileID: 9085080333729581049, guid: 24496dc8a96079c489e723db262da08e,
+    type: 3}
+  spawnValues: {x: 17.5, y: 32}
+  minSpeed: -250
+  maxSpeed: -500
+  spawnRate: 1
 --- !u!1 &1530659020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3027,6 +3076,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 4.92
       objectReference: {fileID: 0}
+    - target: {fileID: 1494884520029920250, guid: 7979e1dcca1720e469c92d89f43d2b9a,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.13958359
+      objectReference: {fileID: 0}
+    - target: {fileID: 1494884520029920250, guid: 7979e1dcca1720e469c92d89f43d2b9a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 9.279167
+      objectReference: {fileID: 0}
     - target: {fileID: 1494884520029920252, guid: 7979e1dcca1720e469c92d89f43d2b9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3087,6 +3146,12 @@ PrefabInstance:
       propertyPath: powerBar
       value: 
       objectReference: {fileID: 838959738}
+    - target: {fileID: 1494884520029920254, guid: 7979e1dcca1720e469c92d89f43d2b9a,
+        type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 1169669970303570422, guid: b689785fced419543ae2bb48bd55d70d,
+        type: 3}
     - target: {fileID: 1494884520029920255, guid: 7979e1dcca1720e469c92d89f43d2b9a,
         type: 3}
       propertyPath: m_Name
@@ -3106,6 +3171,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3553600530645658165, guid: 7165f8cdee2c6e34388f946bcdaa64f7,
+        type: 3}
+      propertyPath: enemyExplosion
+      value: 
+      objectReference: {fileID: 1169669970303570422, guid: b689785fced419543ae2bb48bd55d70d,
+        type: 3}
     - target: {fileID: 3553600531119108202, guid: 7165f8cdee2c6e34388f946bcdaa64f7,
         type: 3}
       propertyPath: m_LocalPosition.x

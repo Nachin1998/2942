@@ -8,14 +8,14 @@ public class Explosion : MonoBehaviour
     public List<AudioClip> audios = new List<AudioClip>();
     [HideInInspector] public int sound;
     float timer = 0;
-    void Start()
+    public void SetSound()
     {
         sound = Random.Range(0, audios.Count);
         source.clip = audios[sound];
         source.Play();
     }
 
-    private void Update()
+    public void DestroyAfterTime()
     {
         timer += Time.deltaTime;
 

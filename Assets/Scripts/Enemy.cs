@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public GameObject gun;
     public Bullet bullet;
     public float shootRate;
-    public Explosion explosion;
+    public Explosion enemyExplosion;
     float timer;
 
     void Start()
@@ -29,7 +29,10 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(col.gameObject);
+        if(col.gameObject.tag == "PlayerBullet")
+        {
+            Instantiate(enemyExplosion, transform.position, Quaternion.identity);
+            Destroy(col.gameObject);
+        }
     }
 }

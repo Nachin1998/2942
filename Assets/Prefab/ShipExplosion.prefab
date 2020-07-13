@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6289515054993883852}
   - component: {fileID: 6289515054993883850}
-  - component: {fileID: -7497410792896532564}
+  - component: {fileID: 1169669970303570422}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: ShipExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-7497410792896532564
+--- !u!114 &1169669970303570422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6289515054993883848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9ba60daacef9014daaeeedbcbea56e3, type: 3}
+  m_Script: {fileID: 11500000, guid: cc2c968cdd5040d4dadac5835f0d3c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 6289515054993883850}
@@ -4823,6 +4823,7 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -9643,6 +9644,7 @@ ParticleSystemRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

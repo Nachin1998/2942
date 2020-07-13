@@ -8,7 +8,7 @@ public class Background : MonoBehaviour
     public float speed = 1f;
     Vector2 scroll;
     MeshRenderer mr;
-
+    
     void Start()
     {
         mr = GetComponent<MeshRenderer>();
