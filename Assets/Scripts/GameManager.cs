@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public Player player;
+
+    [Space] public GameObject gameOverMenu;
     void Start()
     {
-        
+        gameOverMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -15,7 +17,7 @@ public class GameManager : MonoBehaviour
     {
         if (player.isDead)
         {
-            Debug.Log("This nigga dead");
+            gameOverMenu.SetActive(true);
         }
     }
 }

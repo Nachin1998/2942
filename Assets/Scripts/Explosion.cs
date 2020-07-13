@@ -17,6 +17,8 @@ public class Explosion : MonoBehaviour
 
     private void Update()
     {
+        timer += Time.deltaTime;
+
         if(timer > 2)
         {
             Destroy(gameObject);

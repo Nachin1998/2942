@@ -20,11 +20,11 @@ public class EnemyBullet : Bullet
     }
     private void OnCollisionEnter2D(Collision2D col)
     {        
-        if (col.gameObject.tag == "Player" ||
-            col.gameObject.tag == "PlayerBullet")
+        if (col.gameObject.tag == "PlayerBullet")
         {
             Destroy(col.gameObject);
-            StartCoroutine(DestroyBullet(true));
+            StartCoroutine(DestroyBullet());
         }
+        Destroy(gameObject);
     }
 }

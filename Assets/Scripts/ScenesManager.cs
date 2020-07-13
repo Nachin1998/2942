@@ -8,6 +8,11 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void ReplayLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);

@@ -41,20 +41,15 @@ public class Bullet : MonoBehaviour
 
         if(timer > delayUntillDestroyed)
         {
-            StartCoroutine(DestroyBullet(false));
+            StartCoroutine(DestroyBullet());
         }
     }
 
-    public IEnumerator DestroyBullet(bool instanceExplosionOrNot)
+    public IEnumerator DestroyBullet()
     {
         sr.color = Color.clear;
         Destroy(bc);
         ps.Stop();
-
-        if (instanceExplosionOrNot)
-        {
-            Instantiate(explosion, transform.position, Quaternion.identity);
-        }
 
         yield return new WaitForSeconds(1f);
         Destroy(ps);

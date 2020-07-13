@@ -18,6 +18,10 @@ public class Player : MonoBehaviour
 
     [Space]
 
+    public Explosion explosion;
+
+    [Space]
+
     public Image powerBar;
 
     int maxX;
@@ -26,7 +30,7 @@ public class Player : MonoBehaviour
     Vector2 input;
     Vector2 velocity;
 
-    public bool isDead;
+    [HideInInspector] public bool isDead;
 
     private void Start()
     {
@@ -69,8 +73,10 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(lives <= 0)
+        if(lives <= 0 && !isDead)
         {
+            Destroy(gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             isDead = true;
         }
 

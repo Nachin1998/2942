@@ -24,7 +24,7 @@ public class PlayerBullet : Bullet
             col.gameObject.tag == "EnemyBullet")
         {
             Destroy(col.gameObject);
-            StartCoroutine(DestroyBullet(true));                       
+            StartCoroutine(DestroyBullet());                       
         }
     }
 }
