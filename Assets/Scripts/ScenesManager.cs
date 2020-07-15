@@ -18,9 +18,14 @@ public class ScenesManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void Credits()
+    public void GoToBoss()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void QuitGame()

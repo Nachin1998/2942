@@ -1,15 +1,18 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public Player player;
+    public Boss boss;
+    
+    [Space]
 
-    [Space] public GameObject playerHealthGUI;
-    [Space] public GameObject gameOverMenu;
-
+    public GameObject playerHealthGUI;
+    public GameObject gameOverMenu;
+    public TextMeshProUGUI gameOverTitle;
     Image playerHealth;
     public Animator anim;
     Color orange;
@@ -27,7 +30,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        PlayerUpdate();       
+        PlayerUpdate();
+
+        if (boss)
+        {
+            BossUpdate();
+        }        
     }
 
     void PlayerUpdate()
@@ -69,7 +77,24 @@ public class GameManager : MonoBehaviour
             }
             
             playerHealth.color = Color.black;
-            gameOverMenu.SetActive(true);
+            gameOverTitle.text = "You lost";
+            StartCoroutine(EndGame());
         }
+    }
+
+    void BossUpdate()
+    {
+        if (boss.isDead)
+        {
+            gameOverTitle.text = "You Won";
+            player.won = true;
+            StartCoroutine(EndGame());
+        }
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(1f);
+        gameOverMenu.SetActive(true);
     }
 }

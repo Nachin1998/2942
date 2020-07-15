@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Asteroid : MonoBehaviour
 {
@@ -49,7 +47,6 @@ public class Asteroid : MonoBehaviour
             Instantiate(asteroidExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-
     }
 
     IEnumerator ChangeBodyType()

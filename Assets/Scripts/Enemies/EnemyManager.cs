@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -29,7 +27,7 @@ public class EnemyManager : MonoBehaviour
         asteroid.speed = Random.Range(minSpeed, maxSpeed);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (!player)

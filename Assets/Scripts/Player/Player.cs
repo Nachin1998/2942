@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +26,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool isDead;
     [HideInInspector] public bool gotHit;
+    [HideInInspector] public bool won;
 
     [Space]
     [Header("Player Audio")]
@@ -43,7 +42,7 @@ public class Player : MonoBehaviour
         power = 100f;
         rb = GetComponent<Rigidbody2D>();
         isDead = false;
-
+        won = false;
         maxX = 16;
         maxY = 25;
     }
@@ -113,7 +112,8 @@ public class Player : MonoBehaviour
     {
         powerBar.fillAmount = power / 100;
 
-        if(power < 100 && power > 50) {
+        if(power < 100 && power > 50) 
+        {
             powerBar.color = Color.blue;
         }
         else if (power <  50 && power > 25)
