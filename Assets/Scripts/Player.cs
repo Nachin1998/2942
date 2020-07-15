@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player")]
     public int lives;
     public float power;
     public float movement;
@@ -15,13 +17,7 @@ public class Player : MonoBehaviour
     public Bullet bullet;
     public Shield shield;
     public GameObject[] gun;
-
-    [Space]
-
     public Explosion explosion;
-
-    [Space]
-
     public Image powerBar;
 
     int maxX;
@@ -32,6 +28,14 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool isDead;
     [HideInInspector] public bool gotHit;
+
+    [Space]
+    [Header("Player Audio")]
+
+    public AudioSource source;
+    public AudioClip hitSound;
+    public List<AudioClip> laserSounds = new List<AudioClip>();
+    [HideInInspector] public int sound;
 
     private void Start()
     {
@@ -60,16 +64,19 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
+            //StartCoroutine(PlayLaserSounds());
+            PlayLaserSound();
             for (int i = 0; i < gun.Length; i++)
             {
                 Instantiate(bullet, gun[i].transform.position, Quaternion.identity);
             }
         }
 
-        if (power > 25){                                        //REVISAR SI EL ESCUDO YA EXISTE
+        if (power > 25 && !shield.isActive){
             if (Input.GetMouseButtonDown(1))
             {
-                Instantiate(shield, transform.position, Quaternion.identity, transform);
+                shield.gameObject.SetActive(true);
+                shield.isActive = true;
                 power -= 25;
             }
         }
@@ -92,10 +99,13 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "EnemyBullet" || 
-           col.gameObject.tag == "Asteroid")
+           col.gameObject.tag == "Asteroid" ||
+           col.gameObject.tag == "Enemy")
         {
             lives--;
             StartCoroutine(GotHitCheck());
+            source.clip = hitSound;
+            source.Play();
         }
     }
 
@@ -121,5 +131,12 @@ public class Player : MonoBehaviour
         gotHit = true;
         yield return new WaitForSeconds(0.2f);
         gotHit = false;
+    }
+
+    public void PlayLaserSound()
+    {
+        sound = Random.Range(0, laserSounds.Count);
+        source.clip = laserSounds[sound];
+        source.Play();
     }
 }

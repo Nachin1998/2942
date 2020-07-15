@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         orange = new Color(1f, 0.45f, 0);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         PlayerUpdate();       
@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         {
             playerHealth.color = Color.clear;
         }
-
        
         if (player.isDead)
         {

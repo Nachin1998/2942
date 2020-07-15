@@ -203,6 +203,11 @@ MonoBehaviour:
     type: 3}
   powerBar: {fileID: 0}
   isDead: 0
+  gotHit: 0
+  source: {fileID: 0}
+  hitSound: {fileID: 0}
+  laserSounds: []
+  sound: 0
 --- !u!50 &1494884520029920251
 Rigidbody2D:
   serializedVersion: 4

@@ -6,12 +6,12 @@ public class Explosion : MonoBehaviour
 {
     public AudioSource source;
     public List<AudioClip> audios = new List<AudioClip>();
-    [HideInInspector] public int sound;
+    [HideInInspector] public int actualSound;
     float timer = 0;
     public void SetSound()
     {
-        sound = Random.Range(0, audios.Count);
-        source.clip = audios[sound];
+        actualSound = Random.Range(0, audios.Count);
+        source.clip = audios[actualSound];
         source.Play();
     }
 

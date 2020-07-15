@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
-    //public AudioSource shipAudio;
     public GameObject pauseMenu;
     bool pauseMenuActive;
 
@@ -48,6 +47,5 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(true);
         Time.timeScale = 0;
         pauseMenuActive = true;
-        //shipAudio.Stop();
     }
 }

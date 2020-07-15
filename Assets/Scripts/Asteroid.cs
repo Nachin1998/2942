@@ -6,13 +6,13 @@ using UnityEngine.UIElements;
 public class Asteroid : MonoBehaviour
 {
     [HideInInspector] public float speed;
-    
+
     Vector2 movement;
     Rigidbody2D rb;
 
     public Explosion asteroidExplosion;
     float randRotation;
-    float timer =0;
+    float timer = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +32,7 @@ public class Asteroid : MonoBehaviour
         timer += Time.deltaTime;
         transform.Rotate(0, 0, randRotation);
 
-        if(timer > 15)
+        if (timer > 15)
         {
             Destroy(gameObject);
         }
@@ -40,21 +40,22 @@ public class Asteroid : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Shield" ||
-           col.gameObject.tag == "PlayerBullet" ||
-           col.gameObject.tag == "Player")
-        {            
+        if (col.gameObject.tag == "Enemy")
+        {
+            StartCoroutine(ChangeBodyType());
+        }
+        else if (col.gameObject.tag != "Asteroid")
+        {
             Instantiate(asteroidExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
-        if(col.gameObject.tag == "Enemy")
-        {
-            rb.bodyType = RigidbodyType2D.Kinematic;
-        }
-        else
-        {
-            rb.bodyType = RigidbodyType2D.Dynamic;
-        }
+    }
+
+    IEnumerator ChangeBodyType()
+    {
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        yield return new WaitForSeconds(4f);
+        rb.bodyType = RigidbodyType2D.Dynamic;
     }
 }
