@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if (!player)
+        if (!player || player.won)
         {
             return;
         }

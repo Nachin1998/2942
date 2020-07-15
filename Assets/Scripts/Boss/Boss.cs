@@ -9,7 +9,7 @@ public class Boss : MonoBehaviour
     public bool isDead;
     void Start()
     {
-        isDead = false;
+        isDead = false;        
     }
 
     void Update()

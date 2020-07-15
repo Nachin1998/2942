@@ -372,7 +372,7 @@ Transform:
   - {fileID: 79490935}
   m_Father: {fileID: 492203981}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 95.66382, y: 92.22044, z: 359.6563}
 --- !u!114 &285108542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +391,7 @@ MonoBehaviour:
   gunCannon: {fileID: 2075715864}
   explosion: {fileID: 1169669970303570422, guid: b689785fced419543ae2bb48bd55d70d,
     type: 3}
-  gunHealth: 5
+  gunHealth: 20
   source: {fileID: 492203986}
   audios: {fileID: 8300000, guid: 5056b2a957556574591607b278dec155, type: 3}
 --- !u!58 &285108543
@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 492203984}
   - component: {fileID: 492203983}
   - component: {fileID: 492203987}
+  - component: {fileID: 492203988}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -578,6 +579,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: c3d164530d5cf544a881930dd69c033e, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: c3d164530d5cf544a881930dd69c033e, type: 2}
+  - {fileID: 7400000, guid: 8fa73e19fc4ba9742a34dcbf4cf390b1, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -763,11 +765,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e1fb6a50202004a95a62df87a28425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 500
   head: {fileID: 2144776278}
   explosion: {fileID: 1169669970303570422, guid: b689785fced419543ae2bb48bd55d70d,
     type: 3}
   isDead: 0
+--- !u!95 &492203988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492203980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d7ad1093a7ca39d44972a2a1abb97cff, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &817198559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1144,7 @@ MonoBehaviour:
   gunCannon: {fileID: 1381527957}
   explosion: {fileID: 1169669970303570422, guid: b689785fced419543ae2bb48bd55d70d,
     type: 3}
-  gunHealth: 5
+  gunHealth: 20
   source: {fileID: 492203986}
   audios: {fileID: 8300000, guid: 5056b2a957556574591607b278dec155, type: 3}
 --- !u!58 &1252471317
@@ -2342,7 +2363,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3662876879283334816}
         m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
@@ -3340,7 +3361,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 133846522}
         m_MethodName: GoToMainMenu
         m_Mode: 1
         m_Arguments:
@@ -3688,7 +3709,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 133846522}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -4262,6 +4283,7 @@ GameObject:
   - component: {fileID: 3662876879283334810}
   - component: {fileID: 3662876879283334809}
   - component: {fileID: 3662876879283334808}
+  - component: {fileID: 3662876879283334816}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4269,6 +4291,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3662876879283334816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662876879283334815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe8bac39bd2be44c8c0666dd344b572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 3662876879556558703}
 --- !u!1 &3662876879467012035
 GameObject:
   m_ObjectHideFlags: 0

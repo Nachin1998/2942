@@ -2,14 +2,17 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class GameManager : MonoBehaviour
 {
     public Player player;
     public Boss boss;
-    
+    float gameTimer;
+    float timeToWin;
     [Space]
 
+    public TextMeshProUGUI gameTimeText;
     public GameObject playerHealthGUI;
     public GameObject gameOverMenu;
     public TextMeshProUGUI gameOverTitle;
@@ -25,17 +28,36 @@ public class GameManager : MonoBehaviour
         playerHealth.color = Color.clear;
 
         orange = new Color(1f, 0.45f, 0);
+
+        timeToWin = 60;
     }
 
 
     void Update()
-    {
+    {        
         PlayerUpdate();
 
         if (boss)
         {
             BossUpdate();
-        }        
+        }
+
+        if (!gameTimeText)
+        {
+            return;
+        }
+
+        if (!player.isDead && !player.won)
+        {
+            gameTimer += Time.deltaTime;
+            gameTimeText.text = gameTimer.ToString("F2");
+        }
+
+        if (gameTimer >= timeToWin)
+        {
+            player.won = true;
+            gameTimer = timeToWin;
+        }
     }
 
     void PlayerUpdate()
@@ -78,6 +100,12 @@ public class GameManager : MonoBehaviour
             
             playerHealth.color = Color.black;
             gameOverTitle.text = "You lost";
+            StartCoroutine(EndGame());
+        }
+
+        if (player.won)
+        {
+            gameOverTitle.text = "You Won";
             StartCoroutine(EndGame());
         }
     }
